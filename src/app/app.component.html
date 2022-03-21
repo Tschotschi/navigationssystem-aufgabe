@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <div class="navigation-wrapper">
+    <h1>Navigationssystem</h1>
+
+    <nav mat-tab-nav-bar backgroundColor="primary">
+
+        <a mat-tab-link
+        *ngFor="let routeLink of routeLinks; let i = index;"
+        [routerLink]="routeLink.link"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="activeLinkIndex === i"
+        (click)="activeLinkIndex = i"
+        [routerLinkActiveOptions]="{exact: true}"   
+     >
+         {{routeLink.label}}
+     </a>
+
+    </nav>
+
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="content-wrapper">
+
+  </div>
+
+  <section>
+    <div class="button-wrapper">
+      <button mat-raised-button id="prev-button" color="primary"  [disabled]="activeLinkIndex === 0 || activeLinkIndex === -1 " (click)="prev()" >Zurück</button>
+      <button mat-raised-button id="next-button" color="primary"  [disabled]="activeLinkIndex === 3 || activeLinkIndex === -1" (click)="next()">Vor</button>
+    </div>
+  </section>
+
+</div>
+
+
+
+
+
